@@ -115,11 +115,11 @@ section {
   text-decoration: underline;
 }
 
-.breadcrumbs ol li+li {
+.breadcrumbs ol li + li {
   padding-left: 10px;
 }
 
-.breadcrumbs ol li+li::before {
+.breadcrumbs ol li + li::before {
   display: inline-block;
   padding-right: 10px;
   color: #8894f6;
@@ -247,7 +247,7 @@ section {
 .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
-.navbar li:hover>a {
+.navbar li:hover > a {
   color: #4154f1;
 }
 
@@ -299,11 +299,11 @@ section {
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
-.navbar .dropdown ul li:hover>a {
+.navbar .dropdown ul li:hover > a {
   color: #4154f1;
 }
 
-.navbar .dropdown:hover>ul {
+.navbar .dropdown:hover > ul {
   opacity: 1;
   top: 100%;
   visibility: visible;
@@ -315,7 +315,7 @@ section {
   visibility: hidden;
 }
 
-.navbar .dropdown .dropdown:hover>ul {
+.navbar .dropdown .dropdown:hover > ul {
   opacity: 1;
   top: 0;
   left: 100%;
@@ -327,7 +327,7 @@ section {
     left: -90%;
   }
 
-  .navbar .dropdown .dropdown:hover>ul {
+  .navbar .dropdown .dropdown:hover > ul {
     left: -100%;
   }
 }
@@ -398,7 +398,7 @@ section {
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
-.navbar-mobile li:hover>a {
+.navbar-mobile li:hover > a {
   color: #4154f1;
 }
 
@@ -433,11 +433,11 @@ section {
 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
-.navbar-mobile .dropdown ul li:hover>a {
+.navbar-mobile .dropdown ul li:hover > a {
   color: #4154f1;
 }
 
-.navbar-mobile .dropdown>.dropdown-active {
+.navbar-mobile .dropdown > .dropdown-active {
   display: block;
 }
 
@@ -800,10 +800,10 @@ section {
 
 .services .service-box .icon {
   font-size: 36px;
-  padding: 40px 20px;
-  border-radius: 4px;
+  padding: 20px;
+  border-radius: 8px;
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   display: inline-block;
   line-height: 0;
   transition: 0.3s;
@@ -829,21 +829,126 @@ section {
   font-size: 18px;
 }
 
-.services .service-box.blue {
-  border-bottom: 3px solid #2db6fa;
+/*----- Tech Stack -----*/
+
+/* HTML */
+.services .service-box.html {
+  border-bottom: 3px solid #e34e26;
+}
+.services .service-box.html .icon {
+  color: #e34e26;
+  background: #ffffff;
+}
+.services .service-box.html .read-more {
+  color: #e34e26;
+}
+.services .service-box.html:hover {
+  background: #e34e26;
 }
 
-.services .service-box.blue .icon {
-  color: #2db6fa;
-  background: #dbf3fe;
+/* CSS */
+.services .service-box.css {
+  border-bottom: 3px solid #1b73ba;
+}
+.services .service-box.css .icon {
+  color: #1b73ba;
+  background: #ffffff;
+}
+.services .service-box.css .read-more {
+  color: #1b73ba;
+}
+.services .service-box.css:hover {
+  background: #1b73ba;
 }
 
-.services .service-box.blue .read-more {
-  color: #2db6fa;
+/* js */
+.services .service-box.js {
+  border-bottom: 3px solid #d4b830;
+}
+.services .service-box.js .icon {
+  color: #d4b830;
+  background: #ffffff;
+}
+.services .service-box.js .read-more {
+  color: #d4b830;
+}
+.services .service-box.js:hover {
+  background: #d4b830;
 }
 
-.services .service-box.blue:hover {
-  background: #2db6fa;
+/* php */
+.services .service-box.php {
+  border-bottom: 3px solid #6181b6;
+}
+.services .service-box.php .icon {
+  color: #6181b6;
+  background: #ffffff;
+}
+.services .service-box.php .read-more {
+  color: #6181b6;
+}
+.services .service-box.php:hover {
+  background: #6181b6;
+}
+
+/* laravel */
+.services .service-box.laravel {
+  border-bottom: 3px solid #ff2d20;
+}
+.services .service-box.laravel .icon {
+  color: #ff2d20;
+  background: #ffffff;
+}
+.services .service-box.laravel .read-more {
+  color: #ff2d20;
+}
+.services .service-box.laravel:hover {
+  background: #ff2d20;
+}
+
+/* bootstrap */
+.services .service-box.bootstrap {
+  border-bottom: 3px solid #7952b3;
+}
+.services .service-box.bootstrap .icon {
+  color: #7952b3;
+  background: #ffffff;
+}
+.services .service-box.bootstrap .read-more {
+  color: #7952b3;
+}
+.services .service-box.bootstrap:hover {
+  background: #7952b3;
+}
+
+/* git */
+.services .service-box.git {
+  border-bottom: 3px solid #de4c36;
+}
+.services .service-box.git .icon {
+  color: #de4c36;
+  background: #ffffff;
+}
+.services .service-box.git .read-more {
+  color: #de4c36;
+}
+.services .service-box.git:hover {
+  background: #de4c36;
+}
+
+/* github */
+.services .service-box.github {
+  border-bottom: 3px solid #161614;
+}
+.services .service-box.github .icon {
+  color: #161614;
+  background: #ffffff;
+}
+.services .service-box.github .read-more {
+  color: #161614;
+}
+.services .service-box.github:hover {
+  background: #161614;
 }
 
 .services .service-box.orange {
@@ -1292,7 +1397,7 @@ section {
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
   margin-top: 10px;
 }
 
@@ -1685,7 +1790,7 @@ section {
   padding: 12px 15px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
   background: #4154f1;
   border: 0;
   padding: 10px 30px;
@@ -1694,7 +1799,7 @@ section {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: #5969f3;
 }
 
@@ -1757,7 +1862,7 @@ section {
   margin: 0;
 }
 
-.blog .entry .entry-meta ul li+li {
+.blog .entry .entry-meta ul li + li {
   padding-left: 20px;
 }
 
@@ -1874,7 +1979,7 @@ section {
   display: inline-block;
 }
 
-.blog .entry .entry-footer .tags li+li::before {
+.blog .entry .entry-footer .tags li + li::before {
   padding-right: 6px;
   color: #6c757d;
   content: ",";
@@ -2093,7 +2198,7 @@ section {
   position: relative;
 }
 
-.blog .sidebar .search-form form input[type=text] {
+.blog .sidebar .search-form form input[type="text"] {
   border: 0;
   padding: 4px;
   border-radius: 4px;
@@ -2130,7 +2235,7 @@ section {
   padding: 0;
 }
 
-.blog .sidebar .categories ul li+li {
+.blog .sidebar .categories ul li + li {
   padding-top: 10px;
 }
 
@@ -2149,7 +2254,7 @@ section {
   font-size: 14px;
 }
 
-.blog .sidebar .recent-posts .post-item+.post-item {
+.blog .sidebar .recent-posts .post-item + .post-item {
   margin-top: 15px;
 }
 
@@ -2249,13 +2354,13 @@ section {
   border: 1px solid #e1ecff;
 }
 
-.footer .footer-newsletter form input[type=email] {
+.footer .footer-newsletter form input[type="email"] {
   border: 0;
   padding: 8px;
   width: calc(100% - 140px);
 }
 
-.footer .footer-newsletter form input[type=submit] {
+.footer .footer-newsletter form input[type="submit"] {
   position: absolute;
   top: 0;
   right: 0;
@@ -2271,7 +2376,7 @@ section {
   border-radius: 4px;
 }
 
-.footer .footer-newsletter form input[type=submit]:hover {
+.footer .footer-newsletter form input[type="submit"]:hover {
   background: #5969f3;
 }
 
