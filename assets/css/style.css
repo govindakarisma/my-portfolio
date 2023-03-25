@@ -2625,3 +2625,10 @@ ul.social-media li:hover:nth-child(4) a:before {
 ul.social-media li:hover:nth-child(4) a:after {
   background: #e46880;
 }
+
+/* Sliders image overflow */
+
+.slide-image-fix {
+  max-height: 480px;
+  overflow: hidden;
+}
