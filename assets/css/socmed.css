@@ -1,0 +1,56 @@
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.social {
+  position: fixed;
+  top: 37%;
+  z-index: 100;
+}
+.social ul {
+  padding: 0px;
+  transform: translate(-270px, 0);
+}
+.social ul li {
+  display: block;
+  background: rgba(255, 255, 255, 0.2);
+  width: 330px;
+  text-align: right;
+  padding-right: 11px;
+  transition: all 0.5s;
+}
+.social ul li:hover {
+  transform: translate(110px, 0);
+  background: rgba(197, 216, 255, 0.2);
+}
+.social ul li:hover a {
+  color: #000;
+}
+.social ul li:hover i {
+  background: rgba(255, 255, 255, 0.8);
+  transform: rotate(360deg);
+  transition: all 0.5s;
+}
+.social ul li i {
+  margin-left: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  transform: rotate(0deg);
+}
+
+.social ul li i.bi-github {
+  color: #171515;
+}
+.social ul li i.bi-linkedin {
+  color: #0e76a8;
+}
+.social ul li i.bi-instagram {
+  color: #dd2a7b;
+}
+.social ul li i.bi-twitter {
+  color: #00acee;
+}
