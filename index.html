@@ -5,17 +5,17 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <title>Govinda Kharisma Dewa - My Portfolio</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+    <meta
+      content="My Portfolio merupakan sebuah website (static) untuk mempublikasikan project-project khususnya saya pribadi (Govinda Kharisma Dewa), pada website ini berisi dokumentasi website maupun aplikasi yang sudah saya garap sejauh ini"
+      name="description"
+    />
+    <meta content="Govinda, Portfolio, Web, Programmer, Web Developer, Govinda Programmer, Govinda Kharisma Dewa, Sistem informasi" name="keywords" />
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="assets/img/clean-gv-icon.svg" rel="icon" />
+    <link href="assets/img/clean-gv-icon.svg" rel="apple-touch-icon" />
 
     <!-- Google Fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" /> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet" />
 
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
@@ -25,6 +25,7 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/socmed.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -32,18 +33,19 @@
     <header id="header" class="header fixed-top">
       <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/logo.png" alt="" />
           <span>My Portfolio</span>
         </a>
 
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
             <li><a class="nav-link scrollto" href="#techstack">Tech Stack</a></li>
             <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-            <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+            <li><a class="nav-link scrollto" href="#certificate">Sertifikat</a></li>
+            <li>
+              <a class="getstarted scrollto" href="assets/resume-govinda.pdf">Download CV</a>
+            </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
@@ -77,6 +79,22 @@
     <!-- End Hero -->
 
     <main id="main">
+      <aside class="social">
+        <ul>
+          <li class="shadow-sm my-2 py-3 rounded-pill">
+            <a href="https://github.com/govindakarisma">Github <i class="bi bi-github"></i></a>
+          </li>
+          <li class="shadow-sm my-2 py-3 rounded-pill">
+            <a href="https://www.linkedin.com/in/govindakarisma">Linkedin <i class="bi bi-linkedin"></i></a>
+          </li>
+          <li class="shadow-sm my-2 py-3 rounded-pill">
+            <a href="https://instagram.com/govindakarisma">Instagram <i class="bi bi-instagram"></i></a>
+          </li>
+          <li class="shadow-sm my-2 py-3 rounded-pill">
+            <a href="https://twitter.com/govindakarisma">Twitter <i class="bi bi-twitter"></i></a>
+          </li>
+        </ul>
+      </aside>
       <!-- ======= About Section ======= -->
       <section id="about" class="about">
         <div class="container" data-aos="fade-up">
@@ -94,7 +112,7 @@
                   dapat dalam membuat <strong>Rest API</strong>, <strong>Vector</strong> dan juga dapat menggunakan <strong>Git & GitHub</strong>.
                 </p>
                 <div class="text-center text-lg-start">
-                  <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                  <a href="assets/resume-govinda.pdf" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                     <span>Download CV</span>
                     <i class="bi bi-file-arrow-down"></i>
                   </a>
@@ -179,32 +197,62 @@
           </header>
 
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 mb-5">
               <div class="post-box">
-                <div class="post-img"><img src="assets/img/portfolio/Menara/Menara Pelalawan - Client Side - Hero.png" class="img-fluid" alt="" /></div>
-                <span class="post-date">Bootstrap, Highchart, Json, jQuery, Leaflet JS, Laravel, Sweet Alert</span>
+                <div class="post-img"><img src="assets/img/portfolio/Menara/menara-katalog.jpg" class="img-fluid" alt="gis menara" /></div>
                 <h3 class="post-title">GIS Menara Pelalawan</h3>
+                <span class="post-date fw-light">Bootstrap, Highchart, Json, jQuery, Leaflet JS, Laravel, Sweet Alert</span>
                 <p>Sebuah situs untuk marking dan monitoring persebaran menara telekomunikasi di Kabupaten Pelalawan</p>
-                <a href="javascript:void(0)" class="readmore stretched-link mt-auto"><span>Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
+                <a href="portfolios/gis-menara.html" class="readmore stretched-link mt-auto"><span>Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 mb-5">
               <div class="post-box">
-                <div class="post-img"><img src="assets/img/portfolio/UMKM/UMKM Pelalawan - Client Side - Detail UMKM.png" class="img-fluid" alt="" /></div>
-                <span class="post-date">Bootstrap, Highchart, Json, Laravel, Livewire, Sweet Alert</span>
+                <div class="post-img"><img src="assets/img/portfolio/UMKM/umkm-katalog.jpg" class="img-fluid" alt="umkm" /></div>
                 <h3 class="post-title">UMKM Pelalawan</h3>
+                <span class="post-date fw-light">Bootstrap, Highchart, Json, Laravel, Livewire, Sweet Alert</span>
                 <p>Aplikasi informasi data-data UMKM yang berada di Kabupaten Pelalawan</p>
+                <a href="portfolios/umkm.html" class="readmore stretched-link mt-auto"><span>Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+              <div class="post-box">
+                <div class="post-img"><img src="assets/img/portfolio/Loker/loker-katalog.jpg" class="img-fluid" alt="loker" /></div>
+                <h3 class="post-title">Loker Pelalawan</h3>
+                <span class="post-date fw-light">Bootstrap, Apex Chart, Json, Laravel, Sweet Alert</span>
+                <p>Aplikasi portal yang berisi kumpulan Lowongan Pekerjaan (Loker) yang berada di Kabupaten Pelalawan</p>
                 <a href="javascript:void(0)" class="readmore stretched-link mt-auto"><span>Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4 mb-5">
               <div class="post-box">
-                <div class="post-img"><img src="assets/img/portfolio/Loker/Loker Pelalawan - Client Side - Hero.png" class="img-fluid" alt="" /></div>
-                <span class="post-date">Bootstrap, Apex Chart, Json, Laravel, Sweet Alert</span>
-                <h3 class="post-title">Loker Pelalawan</h3>
-                <p>Aplikasi portal yang berisi kumpulan Lowongan Pekerjaan (Loker) yang berada di Kabupaten Pelalawan</p>
+                <div class="post-img"><img src="assets/img/portfolio/Dapro/p3ke-katalog.jpg" class="img-fluid" alt="dapro-p3ke" /></div>
+                <h3 class="post-title">Dapro P3KE</h3>
+                <span class="post-date fw-light">Bootstrap, Highchart, Json, Laravel, Livewire, Sweet Alert</span>
+                <p>Dapro (Data Processing) merupakan aplikasi pemrosesan dan mengelompokkan data kemiskinan masyarakat</p>
+                <a href="javascript:void(0)" class="readmore stretched-link mt-auto"><span>Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+              <div class="post-box">
+                <div class="post-img"><img src="assets/img/portfolio/landingpage-katalog.jpg" class="img-fluid" alt="dapro-p3ke" /></div>
+                <h3 class="post-title">Landing Page</h3>
+                <span class="post-date fw-light">Bootstrap</span>
+                <p>Web statis untuk tampilan depan Website Utama Pemerintah Kabupaten Pelalawan</p>
+                <a href="javascript:void(0)" class="readmore stretched-link mt-auto"><span>Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+              <div class="post-box">
+                <div class="post-img"><img src="assets/img/portfolio/Ditreskrimsus/ditreskrimsus-katalog.jpg" class="img-fluid" alt="dapro-p3ke" /></div>
+                <h3 class="post-title">Pengaduan Ditreskrimsus</h3>
+                <span class="post-date fw-light">Bootstrap, jQuery, Laravel, Sweet Alert</span>
+                <p>Web statis untuk tampilan depan Website Utama Pemerintah Kabupaten Pelalawan</p>
                 <a href="javascript:void(0)" class="readmore stretched-link mt-auto"><span>Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
               </div>
             </div>
@@ -213,165 +261,119 @@
       </section>
       <!-- End Portfolio Section -->
 
-      <!-- ======= Contact Section ======= -->
-      <section id="contact" class="contact">
-        <div class="container" data-aos="fade-up">
+      <!-- ======= Certificate Section ======= -->
+      <section id="certificate" class="portfolio">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
           <header class="section-header">
-            <h2>Contact</h2>
-            <p>Contact Us</p>
+            <p>Sertifikat</p>
           </header>
 
-          <div class="row gy-4">
-            <div class="col-lg-6">
-              <div class="row gy-4">
-                <div class="col-md-6">
-                  <div class="info-box">
-                    <i class="bi bi-geo-alt"></i>
-                    <h3>Address</h3>
-                    <p>A108 Adam Street,<br />New York, NY 535022</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="info-box">
-                    <i class="bi bi-telephone"></i>
-                    <h3>Call Us</h3>
-                    <p>+1 5589 55488 55<br />+1 6678 254445 41</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="info-box">
-                    <i class="bi bi-envelope"></i>
-                    <h3>Email Us</h3>
-                    <p>info@example.com<br />contact@example.com</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="info-box">
-                    <i class="bi bi-clock"></i>
-                    <h3>Open Hours</h3>
-                    <p>Monday - Friday<br />9:00AM - 05:00PM</p>
+          <div class="row gy-4 portfolio-container aos-init aos-animate" data-aos="fade-up" data-aos-delay="200" style="position: relative; height: 1008px">
+            <!-- BNSP -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px">
+              <div class="portfolio-wrap">
+                <img src="assets/img/sertifikat/bnsp-katalog.jpg" class="img-fluid" alt="bnsp-junior-web-dev" />
+                <div class="portfolio-info">
+                  <h4>BNSP</h4>
+                  <p>Junior Web Developer</p>
+                  <div class="portfolio-links">
+                    <a href="assets/img/sertifikat/bnsp.jpg" data-gallery="portfolioGallery" class="portfokio-lightbox">
+                      <i class="bi bi-plus"></i>
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="col-lg-6">
-              <form action="forms/contact.php" method="post" class="php-email-form">
-                <div class="row gy-4">
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required />
-                  </div>
-
-                  <div class="col-md-6">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required />
-                  </div>
-
-                  <div class="col-md-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required />
-                  </div>
-
-                  <div class="col-md-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                    <button type="submit">Send Message</button>
+            <!-- Dicoding -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="position: absolute; left: 440px; top: 0px">
+              <div class="portfolio-wrap">
+                <img src="assets/img/sertifikat/dicoding.jpg" class="img-fluid" alt="dicoding-basic-programming" />
+                <div class="portfolio-info">
+                  <h4>Dicoding</h4>
+                  <p>Dasar Pemrograman Web</p>
+                  <div class="portfolio-links">
+                    <a href="assets/img/sertifikat/dicoding.jpg" data-gallery="portfolioGallery" class="portfokio-lightbox">
+                      <i class="bi bi-plus"></i>
+                    </a>
                   </div>
                 </div>
-              </form>
+              </div>
+            </div>
+            <!-- Skill Academy -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 880px; top: 0px">
+              <div class="portfolio-wrap">
+                <img src="assets/img/sertifikat/skill-academy-karalog.jpg" class="img-fluid" alt="skill-academy" />
+                <div class="portfolio-info">
+                  <h4>Skill Academy</h4>
+                  <p>Dasar Pemrograman untuk Data Scienece</p>
+                  <div class="portfolio-links">
+                    <a href="assets/img/sertifikat/skill-academy.jpg" data-gallery="portfolioGallery" class="portfokio-lightbox">
+                      <i class="bi bi-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Progate -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 880px; top: 0px">
+              <div class="portfolio-wrap">
+                <img src="assets/img/sertifikat/progate-basic.jpg" class="img-fluid" alt="progate" />
+                <div class="portfolio-info">
+                  <h4>Prograte</h4>
+                  <p>Kursus HTML & CSS</p>
+                  <div class="portfolio-links">
+                    <a href="assets/img/sertifikat/progate-basic.jpg" data-gallery="portfolioGallery" class="portfokio-lightbox">
+                      <i class="bi bi-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Predatech -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 880px; top: 0px">
+              <div class="portfolio-wrap">
+                <img src="assets/img/sertifikat/predatech.jpg" class="img-fluid" alt="Predatech" />
+                <div class="portfolio-info">
+                  <h4>Predatech</h4>
+                  <p>Tutor Basic Programming</p>
+                  <div class="portfolio-links">
+                    <a href="assets/img/sertifikat/predatech.jpg" data-gallery="portfolioGallery" class="portfokio-lightbox">
+                      <i class="bi bi-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Passion Techno -->
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 880px; top: 0px">
+              <div class="portfolio-wrap">
+                <img src="assets/img/sertifikat/passion-techno.jpg" class="img-fluid" alt="Passion Techno" />
+                <div class="portfolio-info">
+                  <h4>Passion Techno</h4>
+                  <p>Lomba Web Design</p>
+                  <div class="portfolio-links">
+                    <a href="assets/img/sertifikat/passion-techno.jpg" data-gallery="portfolioGallery" class="portfokio-lightbox">
+                      <i class="bi bi-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- End Contact Section -->
+      <!-- End Certificate Section -->
     </main>
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-      <div class="footer-newsletter">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-12 text-center">
-              <h4>Our Newsletter</h4>
-              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            </div>
-            <div class="col-lg-6">
-              <form action="" method="post"><input type="email" name="email" /><input type="submit" value="Subscribe" /></form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-top">
-        <div class="container">
-          <div class="row gy-4">
-            <div class="col-lg-5 col-md-12 footer-info">
-              <a href="index.html" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="" />
-                <span>FlexStart</span>
-              </a>
-              <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-
-            <div class="col-lg-2 col-6 footer-links">
-              <h4>Useful Links</h4>
-              <ul>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-              </ul>
-            </div>
-
-            <div class="col-lg-2 col-6 footer-links">
-              <h4>Our Services</h4>
-              <ul>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-                <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
-              </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-              <h4>Contact Us</h4>
-              <p>
-                A108 Adam Street <br />
-                New York, NY 535022<br />
-                United States <br /><br />
-                <strong>Phone:</strong> +1 5589 55488 55<br />
-                <strong>Email:</strong> info@example.com<br />
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="container">
         <div class="copyright">
           &copy; Copyright <strong><span>FlexStart</span></strong
           >. All Rights Reserved
         </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
+        <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
       </div>
     </footer>
     <!-- End Footer -->
