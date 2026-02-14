@@ -27,7 +27,7 @@ Ya, ini memungkinkan dengan menggunakan platform hosting yang mendukung aplikasi
 - **Firebase Hosting + Firebase Functions**: Hosting gratis dengan backend serverless.
 - Alternatif: GitHub Pages untuk frontend statis, dan backend di Heroku (free tier terbatas) atau Render (gratis untuk web apps sederhana).
 
-Rekomendasi: Gunakan Vercel untuk kesederhanaan, karena terintegrasi dengan Git dan mendukung Next.js (React-based) yang cocok untuk aplikasi dinamis.
+Rekomendasi: Gunakan **Vercel** untuk kesederhanaan, karena terintegrasi dengan Git dan mendukung Next.js (React-based) yang cocok untuk aplikasi dinamis. Hosting ini disetujui untuk proyek ini.
 
 ## Persyaratan Fungsional
 
@@ -101,6 +101,102 @@ Rekomendasi: Gunakan Vercel untuk kesederhanaan, karena terintegrasi dengan Git 
 - Admin mengelola konten melalui form di Admin Side.
 - Data disimpan di Firestore/Storage.
 - Client Side mengambil data via API dan render.
+
+## Struktur Folder dan Manajemen Folder
+
+Untuk memudahkan maintenance dan deployment, kita menggunakan **satu proyek Next.js** (monorepo) daripada memisahkan Client Side dan Admin Side menjadi dua proyek terpisah. Ini mengurangi kompleksitas dan memungkinkan sharing komponen umum.
+
+### Struktur Folder Utama
+
+```
+my-portfolio-next/  # Nama proyek baru (pisah dari folder statis lama)
+├── components/     # Komponen reusable (Header, Footer, dll.)
+├── pages/          # Routing Next.js
+│   ├── index.js    # Halaman utama Client Side (/)
+│   ├── portfolio/  # Halaman detail portfolio
+│   │   └── [slug].js
+│   ├── admin/      # Admin Side
+│   │   ├── index.js  # Dashboard admin (/admin)
+│   │   ├── login.js  # Login (/admin/login)
+│   │   ├── portfolio.js  # Manajemen portfolio (/admin/portfolio)
+│   │   ├── certificates.js  # Manajemen sertifikat (/admin/certificates)
+│   │   └── cv.js    # Manajemen CV (/admin/cv)
+│   └── api/         # Serverless functions (backend API)
+│       ├── portfolio.js
+│       ├── certificates.js
+│       └── upload.js
+├── public/         # Static assets (gambar, CSS, dll.)
+├── styles/         # CSS global dan Bootstrap
+├── lib/            # Utility functions (Firebase config, dll.)
+├── package.json
+└── next.config.js
+```
+
+### Pembagian Client Side dan Admin Side
+
+- **Client Side**: Halaman di `/pages/` root (index.js, portfolio/, dll.) – akses publik.
+- **Admin Side**: Halaman di `/pages/admin/` – dilindungi autentikasi.
+- **Shared Components**: Komponen seperti Header atau Footer bisa digunakan di kedua sisi.
+- **Keuntungan**: Mudah deploy sebagai satu aplikasi di Vercel; routing otomatis.
+
+Jika di masa depan perlu dipisah (misal, untuk scaling), kita bisa refactor menjadi dua proyek.
+
+## Persiapan dan Instalasi Teknologi
+
+Teknologi yang disetujui: Next.js, Firebase (Auth, Firestore, Storage), Bootstrap.
+
+### Yang Perlu Disiapkan
+
+1. **Akun dan Tools**:
+   - Akun GitHub (untuk repo dan integrasi Vercel).
+   - Akun Vercel (daftar gratis di vercel.com).
+   - Akun Firebase (daftar di firebase.google.com, buat project baru).
+   - Node.js versi 16+ (download dari nodejs.org).
+   - Git (jika belum ada).
+
+2. **Dependencies Utama** (akan diinstall via npm):
+   - `next`: Framework React untuk SSR.
+   - `react` dan `react-dom`: Library React.
+   - `firebase`: SDK untuk Auth, Firestore, Storage.
+   - `bootstrap`: CSS framework.
+   - `react-bootstrap` atau `bootstrap` untuk komponen React (opsional).
+   - `react-hook-form`: Untuk form admin.
+   - `axios` atau `fetch`: Untuk API calls (Next.js built-in fetch cukup).
+   - `next-auth`: Jika perlu autentikasi kompleks (opsional, Firebase Auth cukup).
+
+### Langkah Instalasi Awal
+
+1. **Clone atau Buat Repo Baru**:
+   - Buat repo baru di GitHub (misal, `my-portfolio-next`).
+   - Clone ke lokal: `git clone https://github.com/govindakarisma/my-portfolio-next.git`
+
+2. **Setup Proyek Next.js**:
+   - `npx create-next-app@latest .` (di folder repo).
+   - Pilih default options.
+
+3. **Install Dependencies**:
+   - `npm install next react react-dom firebase bootstrap react-bootstrap react-hook-form`
+   - `npm install -D @types/node` (untuk TypeScript, opsional).
+
+4. **Setup Firebase**:
+   - Di Firebase Console, buat project.
+   - Enable Authentication (Email/Password), Firestore, Storage.
+   - Download config (apiKey, dll.) dan simpan di `lib/firebase.js`.
+
+5. **Setup Vercel**:
+   - Connect repo GitHub ke Vercel.
+   - Deploy otomatis saat push.
+
+6. **Migrasi Assets**:
+   - Copy folder `assets/` dari proyek lama ke `public/`.
+
+### Testing Instalasi
+
+- Jalankan `npm run dev` untuk development server.
+- Akses http://localhost:3000.
+- Pastikan Firebase terhubung (test auth dan database).
+
+Jika ada error, kita troubleshoot saat eksekusi.
 
 ## Roadmap Development
 
