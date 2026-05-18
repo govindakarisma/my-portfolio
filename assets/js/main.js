@@ -298,11 +298,19 @@
   const blurLockOverlay = select('#blurLockOverlay');
   const unlockBtn = select('#unlockBtn');
 
-  // Atur trigger blur di sini (scrollY dalam pixel)
-  const blurTriggerPosition = 340; // Ganti angka ini sesuai posisi yang diinginkan
-  
+  // Responsive trigger positions (scrollY in pixels)
+  const blurTriggerPositionDesktop = 420; // for monitor / desktop
+  const blurTriggerPositionMobile = 100; // for mobile screens
+  const mobileBreakpoint = 768; // width threshold for mobile behavior
+
   let blurLocked = false;
   let touchStartY = 0;
+
+  const getBlurTriggerPosition = () => {
+    return window.innerWidth < mobileBreakpoint
+      ? blurTriggerPositionMobile
+      : blurTriggerPositionDesktop;
+  };
 
   // Activate blur lock
   const activateBlurLock = () => {
@@ -321,12 +329,13 @@
   };
 
   // Check if user has scrolled past trigger position
-  const checkAboutSectionScroll = () => {
+  const checkBlurLockScroll = () => {
     if (!blurLockOverlay) return;
 
     const currentScroll = window.scrollY;
+    const triggerPosition = getBlurTriggerPosition();
 
-    if (currentScroll >= blurTriggerPosition) {
+    if (currentScroll >= triggerPosition) {
       activateBlurLock();
     } else {
       deactivateBlurLock();
@@ -335,12 +344,7 @@
 
   // Restrict downward scrolling when blur is locked
   const restrictScroll = (e) => {
-    if (!blurLocked || !aboutSection) return;
-
-    const aboutTop = getAboutSectionTop();
-    const currentScroll = window.scrollY;
-
-    if (currentScroll < aboutTop - 100) return;
+    if (!blurLocked) return;
 
     if (e.type === 'wheel') {
       if (e.deltaY > 0) {
@@ -397,8 +401,9 @@
   }
 
   // Listen to scroll events
-  window.addEventListener('scroll', checkAboutSectionScroll, { passive: true, capture: true });
-  window.addEventListener('load', checkAboutSectionScroll);
+  window.addEventListener('scroll', checkBlurLockScroll, { passive: true, capture: true });
+  window.addEventListener('load', checkBlurLockScroll);
+  window.addEventListener('resize', checkBlurLockScroll);
 
   // Restrict scroll with wheel, keyboard, and touch events
   document.addEventListener('wheel', restrictScroll, { passive: false, capture: true });
@@ -406,7 +411,7 @@
   document.addEventListener('touchmove', restrictScroll, { passive: false, capture: true });
 
   // Initialize blur state on load
-  checkAboutSectionScroll();
+  checkBlurLockScroll();
 
   // Add CSS animations for gimmick effects
   const style = document.createElement('style');

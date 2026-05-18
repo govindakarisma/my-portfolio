@@ -2721,7 +2721,7 @@ ul.social-media li:hover:nth-child(4) a:after {
 /* Responsive styles */
 @media (max-width: 768px) {
   .blur-lock-overlay {
-    height: 75vh;
+    height: 93.8vh;
     border-radius: 24px 24px 0 0;
   }
 
