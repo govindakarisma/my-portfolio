@@ -292,4 +292,150 @@
    */
   new PureCounter();
 
+  /**
+   * Blur Lock Overlay - Triggered on custom scroll position
+   */
+  const blurLockOverlay = select('#blurLockOverlay');
+  const unlockBtn = select('#unlockBtn');
+
+  // Responsive trigger positions (scrollY in pixels)
+  const blurTriggerPositionDesktop = 420; // for monitor / desktop
+  const blurTriggerPositionMobile = 100; // for mobile screens
+  const mobileBreakpoint = 768; // width threshold for mobile behavior
+
+  let blurLocked = false;
+  let touchStartY = 0;
+
+  const getBlurTriggerPosition = () => {
+    return window.innerWidth < mobileBreakpoint
+      ? blurTriggerPositionMobile
+      : blurTriggerPositionDesktop;
+  };
+
+  // Activate blur lock
+  const activateBlurLock = () => {
+    if (!blurLocked && blurLockOverlay) {
+      blurLockOverlay.classList.add('active');
+      blurLocked = true;
+    }
+  };
+
+  // Deactivate blur lock
+  const deactivateBlurLock = () => {
+    if (blurLocked && blurLockOverlay) {
+      blurLockOverlay.classList.remove('active');
+      blurLocked = false;
+    }
+  };
+
+  // Check if user has scrolled past trigger position
+  const checkBlurLockScroll = () => {
+    if (!blurLockOverlay) return;
+
+    const currentScroll = window.scrollY;
+    const triggerPosition = getBlurTriggerPosition();
+
+    if (currentScroll >= triggerPosition) {
+      activateBlurLock();
+    } else {
+      deactivateBlurLock();
+    }
+  };
+
+  // Restrict downward scrolling when blur is locked
+  const restrictScroll = (e) => {
+    if (!blurLocked) return;
+
+    if (e.type === 'wheel') {
+      if (e.deltaY > 0) {
+        e.preventDefault();
+      }
+    }
+
+    if (e.type === 'keydown') {
+      const scrollDownKeys = ['ArrowDown', 'PageDown', ' ', 'End'];
+      if (scrollDownKeys.includes(e.key)) {
+        e.preventDefault();
+      }
+    }
+
+    if (e.type === 'touchmove') {
+      const touchMoveY = e.touches[0].clientY;
+      const isSwipeUp = touchMoveY < touchStartY;
+      if (isSwipeUp) {
+        e.preventDefault();
+      }
+    }
+  };
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  // Fun gimmick animation for button (no unlock function)
+  if (unlockBtn) {
+    unlockBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Fun bounce animation
+      this.style.animation = 'none';
+      setTimeout(() => {
+        this.style.animation = 'bounce 0.6s ease';
+      }, 10);
+      
+      // Wiggle animation
+      this.classList.add('wiggle');
+      setTimeout(() => {
+        this.classList.remove('wiggle');
+      }, 600);
+    });
+    
+    // Hover effects (gimmick)
+    unlockBtn.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05)';
+    });
+    
+    unlockBtn.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+    });
+  }
+
+  // Listen to scroll events
+  window.addEventListener('scroll', checkBlurLockScroll, { passive: true, capture: true });
+  window.addEventListener('load', checkBlurLockScroll);
+  window.addEventListener('resize', checkBlurLockScroll);
+
+  // Restrict scroll with wheel, keyboard, and touch events
+  document.addEventListener('wheel', restrictScroll, { passive: false, capture: true });
+  document.addEventListener('keydown', restrictScroll, false);
+  document.addEventListener('touchmove', restrictScroll, { passive: false, capture: true });
+
+  // Initialize blur state on load
+  checkBlurLockScroll();
+
+  // Add CSS animations for gimmick effects
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      25% { transform: translateY(-10px) scale(1.05); }
+      50% { transform: translateY(0) scale(1); }
+      75% { transform: translateY(-5px) scale(1.02); }
+    }
+    
+    .btn-unlock.wiggle {
+      animation: wiggle 0.6s ease !important;
+    }
+    
+    @keyframes wiggle {
+      0%, 100% { transform: rotateZ(0deg); }
+      15% { transform: rotateZ(-5deg); }
+      30% { transform: rotateZ(5deg); }
+      45% { transform: rotateZ(-5deg); }
+      60% { transform: rotateZ(5deg); }
+      75% { transform: rotateZ(-5deg); }
+    }
+  `;
+  document.head.appendChild(style);
+
 })();
