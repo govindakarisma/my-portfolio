@@ -2632,3 +2632,98 @@ ul.social-media li:hover:nth-child(4) a:after {
   max-height: 480px;
   overflow: hidden;
 }
+
+/*--------------------------------------------------------------
+# Blur Lock Overlay
+--------------------------------------------------------------*/
+
+/* Main blur lock overlay */
+.blur-lock-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.blur-lock-overlay.hidden {
+  display: none !important;
+  pointer-events: none;
+}
+
+.blur-lock-content {
+  text-align: center;
+  animation: slideDown 0.5s ease-out;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Unlock button styling */
+.btn-unlock {
+  background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+  color: white;
+  border: none;
+  padding: 20px 50px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.btn-unlock:hover {
+  background: linear-gradient(135deg, #ff9920 0%, #ff7700 100%);
+  box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
+  transform: translateY(-3px);
+}
+
+.btn-unlock:active {
+  transform: translateY(-1px);
+}
+
+.btn-unlock i {
+  font-size: 20px;
+}
+
+/* Main content with blur effect */
+#main.content-locked {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .btn-unlock {
+    padding: 16px 32px;
+    font-size: 16px;
+    gap: 8px;
+  }
+
+  .blur-lock-overlay {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+}

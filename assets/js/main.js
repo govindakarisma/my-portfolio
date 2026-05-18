@@ -292,4 +292,66 @@
    */
   new PureCounter();
 
+  /**
+   * Blur Lock Overlay - Fun Version
+   */
+  const blurLockOverlay = select('#blurLockOverlay');
+  const unlockBtn = select('#unlockBtn');
+  const mainContent = select('#main');
+
+  // Initialize blur lock
+  const initializeBlurLock = () => {
+    if (blurLockOverlay && unlockBtn && mainContent) {
+      // Add blur effect to main content
+      mainContent.classList.add('content-locked');
+      
+      // Show overlay (make sure it's not hidden)
+      blurLockOverlay.classList.remove('hidden');
+      
+      // Prevent scrolling when locked
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  // Unlock function
+  const unlockContent = () => {
+    if (blurLockOverlay && mainContent) {
+      // Add animation class for fade out
+      blurLockOverlay.style.opacity = '0';
+      blurLockOverlay.style.transition = 'opacity 0.4s ease-out';
+      
+      setTimeout(() => {
+        // Hide overlay
+        blurLockOverlay.classList.add('hidden');
+        
+        // Remove blur from main content
+        mainContent.classList.remove('content-locked');
+        
+        // Allow scrolling again
+        document.body.style.overflow = 'auto';
+        
+        // Reset opacity for next potential use
+        blurLockOverlay.style.opacity = '1';
+      }, 400);
+    }
+  };
+
+  // Add click event to unlock button
+  if (unlockBtn) {
+    unlockBtn.addEventListener('click', unlockContent);
+    
+    // Add some fun interaction
+    unlockBtn.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05)';
+    });
+    
+    unlockBtn.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+    });
+  }
+
+  // Initialize blur lock - run immediately and on load
+  initializeBlurLock();
+  window.addEventListener('load', initializeBlurLock);
+
 })();
