@@ -293,54 +293,100 @@
   new PureCounter();
 
   /**
-   * Blur Lock Overlay - Fun Version
+   * Blur Lock Overlay - Triggered on custom scroll position
    */
   const blurLockOverlay = select('#blurLockOverlay');
   const unlockBtn = select('#unlockBtn');
-  const mainContent = select('#main');
 
-  // Initialize blur lock
-  const initializeBlurLock = () => {
-    if (blurLockOverlay && unlockBtn && mainContent) {
-      // Add blur effect to main content
-      mainContent.classList.add('content-locked');
-      
-      // Show overlay (make sure it's not hidden)
-      blurLockOverlay.classList.remove('hidden');
-      
-      // Prevent scrolling when locked
-      document.body.style.overflow = 'hidden';
+  // Atur trigger blur di sini (scrollY dalam pixel)
+  const blurTriggerPosition = 340; // Ganti angka ini sesuai posisi yang diinginkan
+  
+  let blurLocked = false;
+  let touchStartY = 0;
+
+  // Activate blur lock
+  const activateBlurLock = () => {
+    if (!blurLocked && blurLockOverlay) {
+      blurLockOverlay.classList.add('active');
+      blurLocked = true;
     }
   };
 
-  // Unlock function
-  const unlockContent = () => {
-    if (blurLockOverlay && mainContent) {
-      // Add animation class for fade out
-      blurLockOverlay.style.opacity = '0';
-      blurLockOverlay.style.transition = 'opacity 0.4s ease-out';
-      
-      setTimeout(() => {
-        // Hide overlay
-        blurLockOverlay.classList.add('hidden');
-        
-        // Remove blur from main content
-        mainContent.classList.remove('content-locked');
-        
-        // Allow scrolling again
-        document.body.style.overflow = 'auto';
-        
-        // Reset opacity for next potential use
-        blurLockOverlay.style.opacity = '1';
-      }, 400);
+  // Deactivate blur lock
+  const deactivateBlurLock = () => {
+    if (blurLocked && blurLockOverlay) {
+      blurLockOverlay.classList.remove('active');
+      blurLocked = false;
     }
   };
 
-  // Add click event to unlock button
+  // Check if user has scrolled past trigger position
+  const checkAboutSectionScroll = () => {
+    if (!blurLockOverlay) return;
+
+    const currentScroll = window.scrollY;
+
+    if (currentScroll >= blurTriggerPosition) {
+      activateBlurLock();
+    } else {
+      deactivateBlurLock();
+    }
+  };
+
+  // Restrict downward scrolling when blur is locked
+  const restrictScroll = (e) => {
+    if (!blurLocked || !aboutSection) return;
+
+    const aboutTop = getAboutSectionTop();
+    const currentScroll = window.scrollY;
+
+    if (currentScroll < aboutTop - 100) return;
+
+    if (e.type === 'wheel') {
+      if (e.deltaY > 0) {
+        e.preventDefault();
+      }
+    }
+
+    if (e.type === 'keydown') {
+      const scrollDownKeys = ['ArrowDown', 'PageDown', ' ', 'End'];
+      if (scrollDownKeys.includes(e.key)) {
+        e.preventDefault();
+      }
+    }
+
+    if (e.type === 'touchmove') {
+      const touchMoveY = e.touches[0].clientY;
+      const isSwipeUp = touchMoveY < touchStartY;
+      if (isSwipeUp) {
+        e.preventDefault();
+      }
+    }
+  };
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  // Fun gimmick animation for button (no unlock function)
   if (unlockBtn) {
-    unlockBtn.addEventListener('click', unlockContent);
+    unlockBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Fun bounce animation
+      this.style.animation = 'none';
+      setTimeout(() => {
+        this.style.animation = 'bounce 0.6s ease';
+      }, 10);
+      
+      // Wiggle animation
+      this.classList.add('wiggle');
+      setTimeout(() => {
+        this.classList.remove('wiggle');
+      }, 600);
+    });
     
-    // Add some fun interaction
+    // Hover effects (gimmick)
     unlockBtn.addEventListener('mouseenter', function() {
       this.style.transform = 'scale(1.05)';
     });
@@ -350,8 +396,41 @@
     });
   }
 
-  // Initialize blur lock - run immediately and on load
-  initializeBlurLock();
-  window.addEventListener('load', initializeBlurLock);
+  // Listen to scroll events
+  window.addEventListener('scroll', checkAboutSectionScroll, { passive: true, capture: true });
+  window.addEventListener('load', checkAboutSectionScroll);
+
+  // Restrict scroll with wheel, keyboard, and touch events
+  document.addEventListener('wheel', restrictScroll, { passive: false, capture: true });
+  document.addEventListener('keydown', restrictScroll, false);
+  document.addEventListener('touchmove', restrictScroll, { passive: false, capture: true });
+
+  // Initialize blur state on load
+  checkAboutSectionScroll();
+
+  // Add CSS animations for gimmick effects
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      25% { transform: translateY(-10px) scale(1.05); }
+      50% { transform: translateY(0) scale(1); }
+      75% { transform: translateY(-5px) scale(1.02); }
+    }
+    
+    .btn-unlock.wiggle {
+      animation: wiggle 0.6s ease !important;
+    }
+    
+    @keyframes wiggle {
+      0%, 100% { transform: rotateZ(0deg); }
+      15% { transform: rotateZ(-5deg); }
+      30% { transform: rotateZ(5deg); }
+      45% { transform: rotateZ(-5deg); }
+      60% { transform: rotateZ(5deg); }
+      75% { transform: rotateZ(-5deg); }
+    }
+  `;
+  document.head.appendChild(style);
 
 })();
