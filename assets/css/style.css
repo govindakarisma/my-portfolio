@@ -2632,3 +2632,102 @@ ul.social-media li:hover:nth-child(4) a:after {
   max-height: 480px;
   overflow: hidden;
 }
+
+/*--------------------------------------------------------------
+# Blur Lock Overlay
+--------------------------------------------------------------*/
+
+/* Main blur lock overlay - 70% from bottom only */
+.blur-lock-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* Untuk mengatur tinggi blurLockOverlay */
+  height: 62vh;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(0, 0, 0, 0.18) 100%);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  pointer-events: auto;
+  border-radius: 28px 28px 0 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.blur-lock-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.blur-lock-overlay.hidden {
+  display: none !important;
+  pointer-events: none;
+}
+
+.blur-lock-content {
+  text-align: center;
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Unlock button styling - Gimmick only */
+.btn-unlock {
+  background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+  color: white;
+  border: none;
+  padding: 20px 50px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.btn-unlock:hover {
+  background: linear-gradient(135deg, #ff9920 0%, #ff7700 100%);
+  box-shadow: 0 15px 40px rgba(255, 107, 0, 0.6);
+  transform: translateY(-3px);
+}
+
+.btn-unlock:active {
+  transform: translateY(-1px);
+}
+
+.btn-unlock i {
+  font-size: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .blur-lock-overlay {
+    height: 93.8vh;
+    border-radius: 24px 24px 0 0;
+  }
+
+  .btn-unlock {
+    padding: 16px 32px;
+    font-size: 16px;
+    gap: 8px;
+  }
+}
