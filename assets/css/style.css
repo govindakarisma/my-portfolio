@@ -1236,6 +1236,10 @@ section {
 
 .portfolio .portfolio-wrap img {
   transition: 1s;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
 }
 
 .portfolio .portfolio-wrap .portfolio-info {
